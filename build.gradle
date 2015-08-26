@@ -1,0 +1,40 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1" // min build tools for that is 21
+
+    defaultConfig {
+        applicationId "pro.kondratev.android5xlsx"
+        minSdkVersion 21 // will not work with minSdk lower than 21
+        targetSdkVersion 22
+        versionCode 1
+        versionName "0.0.1"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        //Don't forget to exclude non-binary things from jar
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+    }
+
+    project.tasks.withType(com.android.build.gradle.tasks.Dex) {
+        additionalParameters=['--core-library'] // --core-library option needed for now, will fix it soon
+    }
+
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:multidex:1.0.0' // It is important to enable multi-dex to run apache POI
+}
