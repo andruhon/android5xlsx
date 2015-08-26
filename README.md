@@ -17,7 +17,7 @@ poi-3.12-android.jar :
 
 poi-ooxml-schemas-3.12-20150511.jar //original schemas jar
 
-Copy these two jars into your project's libs directory and use gradle config similar to bild.gradle from this repo.
+Copy these two jars into your project's libs directory and use gradle config similar to build.gradle from this repo.
 
 It will work if you use all original files from https://poi.apache.org/download.html, however you need to re-pack xmlbeans-2.6.0.jar because for some reason it contains duplicates and Android does not like it.
 
