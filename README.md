@@ -24,5 +24,8 @@ It will work if you use all original files from https://poi.apache.org/download.
 #Configuration
 Please find gradle app configuration with comments in the build.gradle, two crucial things are enabling multi-dex and compiling with --core-library option.
 
+#Auto-downloading dependencies
+This might also be achieved by adding 'org.apache.poi:poi-ooxml:3.12' into dependencies, but it is not very straightforward because it is required to add some routine to re-pack xmlbeans and disable preDex. It will work. however the build process will be very slow, so it is easier just to prepare jars once and put them into libs directory (as described above)
+
 #Usage example
 Usage example is coming soon
