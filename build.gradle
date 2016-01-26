@@ -1,40 +1,48 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1" // min build tools for that is 21
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "pro.kondratev.android5xlsx"
-        minSdkVersion 21 // will not work with minSdk lower than 21
-        targetSdkVersion 22
+        minSdkVersion 21
+        targetSdkVersion 23
         versionCode 1
-        versionName "0.0.1"
+        versionName "0.0.2"
         multiDexEnabled true
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
 
     packagingOptions {
-        //Don't forget to exclude non-binary things from jar
         exclude 'META-INF/DEPENDENCIES'
         exclude 'META-INF/NOTICE'
         exclude 'META-INF/NOTICE.txt'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/LICENSE.txt'
     }
+}
 
-    project.tasks.withType(com.android.build.gradle.tasks.Dex) {
-        additionalParameters=['--core-library'] // --core-library option needed for now, will fix it soon
+//Please note that it is only compatible with com.android.tools.build:gradle:1.3.0
+//and not compatible with com.android.tools.build:gradle:1.5.0
+//You can define it in project's build.gradle (usually one level abouve this app's build.gradle)
+afterEvaluate {
+    tasks.matching {
+        it.name.startsWith("dex")
+    }.each { dx ->
+        if (dx.additionalParameters == null) {
+            dx.additionalParameters = ['--core-library']
+        } else {
+            dx.additionalParameters += '--core-library'
+        }
     }
-
+    tasks.matching {
+        it.name.startsWith("preDex")
+    }.each { dx ->
+        dx.enabled = false
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:multidex:1.0.0' // It is important to enable multi-dex to run apache POI
+    compile 'com.android.support:multidex:1.0.1'
 }
