@@ -2,4 +2,5 @@
     <string name="app_name">XLSXPOIExample</string>
     <string name="read_xlsx">Read XLSX</string>
     <string name="write_xlsx">Write XLSX</string>
+    <string name="send_to">Send to...</string>
 </resources>

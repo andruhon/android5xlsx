@@ -5,11 +5,11 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.example.andruhon.xlsxpoiexample"
+        applicationId "pro.kondratev.xlsxpoiexample"
         minSdkVersion 21
         targetSdkVersion 23
-        versionCode 1
-        versionName "1.0"
+        versionCode 9
+        versionName "0.1.0"
         multiDexEnabled true
     }
     packagingOptions {

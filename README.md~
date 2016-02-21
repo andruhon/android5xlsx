@@ -14,7 +14,7 @@ All javax classes from the STAX library and calls to them are renamed to aavax, 
 
 Copy these two jars into your project's libs directory and use gradle config similar to [build.gradle](build.gradle) from this repo.
 
-It will also work if you use all original files from https://poi.apache.org/download.html, however you need to re-pack xmlbeans-2.6.0.jar because for some reason it contains duplicates and Android does not like it. See below for contents of jar and details of javax -> aavax hack.
+It will also work if you use all original files from https://poi.apache.org/download.html, however you need to re-pack xmlbeans-2.6.0.jar because for some reason it contains duplicates and Android does not like it. See (below)[#Contents of poi-3.12 jar] for contents of jar and details of javax -> aavax hack.
 
 #Configuration
 Please find gradle app configuration with comments in the build.gradle, the crucial thing is to enable multi-dex.
