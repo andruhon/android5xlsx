@@ -1,3 +1,5 @@
+# This repository is archived
+
 # Reading and Writing XLSX on Android 5
 Reading and Writing XLSX and XLS on Android 5 with Apache POI
 
